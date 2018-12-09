@@ -11,7 +11,7 @@ for(i=0; i<lessonNames.length; i++) {
 function populateList(lessons = [], itemsList) {
     let toHTML = '';
     for(i=0; i<lessonNames.length; i++) {
-        toHTML += `<li>Lesson ${fileNames[i]}</li>`;
+        toHTML += `<li><a href="lesson.html">Lesson ${fileNames[i]}</a></li>`;
     }
     itemsList.innerHTML = toHTML
 }
