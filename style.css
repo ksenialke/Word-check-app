@@ -39,3 +39,15 @@ h2 {
     font-weight: 100;
     display: flex;
 }
+
+a:link, a:visited {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d51b4a;
+    background-color: transparent;
+    text-decoration: underline;
+}
