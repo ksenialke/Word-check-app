@@ -11,9 +11,13 @@ for(i=0; i<lessonNames.length; i++) {
 function populateList(lessons = [], itemsList) {
     let toHTML = '';
     for(i=0; i<lessonNames.length; i++) {
-        toHTML += `<li><a href="lesson.html">Lesson ${fileNames[i]}</a></li>`;
+        toHTML += `<li id="${i}" onClick ="replyClick(this.id)"><a href="lesson.html">Lesson ${fileNames[i]}</a></li>`;
     }
     itemsList.innerHTML = toHTML
 }
 
 populateList(lessons, itemsList);
+
+function replyClick(clicked_id) {
+    return document.getElementById(clicked_id).textContent;
+}
