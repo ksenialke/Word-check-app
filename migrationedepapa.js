@@ -29,8 +29,7 @@ const LessonSchema = new Schema({
 var Lesson = mongoose.model('Lesson', LessonSchema);
 var Word = mongoose.model('Word', WordSchema);
 
-
-export const lessons = {
+const lessons = {
     lesson17 : [
         'Seventeen',
         {
@@ -295,3 +294,19 @@ export const lessons = {
         }
     ]
 };
+
+Object.keys(lessons).forEach(function(key) {
+    var lesson = lessons[key];
+    var name = lesson[0];
+    var words = lesson.slice(1);
+
+    var wordsDatabaseObjects = [];
+    words.forEach(function(word){
+        var w = new Word(word);
+        w.save();
+        wordsDatabaseObjects.push(w);
+    });
+
+    var l = new Lesson({name: name, words: wordsDatabaseObjects});
+    l.save(function(x){});
+});

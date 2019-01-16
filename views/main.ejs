@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="/faviconit/favi.ico"/>
+    <title>Learn Chinese</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<img style="center" src="/faviconit/CN.png">
+
+<div class="wrapper">
+    <h2>LESSONS</h2>
+    <p></p>
+    <ul class="categories">
+        <% lessons.forEach(function(lesson){ %>
+            <li>
+                <a href=<%= "/lesson/" + lesson._id %>> <%- lesson.name %> </a>
+            </li>
+        <% }); %>
+    </ul>
+</div>
+
+</body>
+</html>

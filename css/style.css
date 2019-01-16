@@ -1,0 +1,57 @@
+html {
+    box-sizing: border-box;
+    background: url('https://www.desktopbackground.org/download/2560x1440/2015/09/28/1018315_2560x1600-chinese-painting-fish-fish-chinese-painting-wallpapers_2560x1600_h.jpg') center no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+}
+
+img {
+    padding: 20px;
+}
+
+.wrapper {
+    padding: 20px;
+    max-width: 350px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 0 0 10px rgba(0,0,0,0.1);
+}
+h2 {
+    text-align: center;
+    margin: 0;
+    font-weight: 200;
+}
+.categories {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    list-style: none;
+    cursor: pointer;
+}
+
+.categories li {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding: 10px 0;
+    font-weight: 100;
+    display: flex;
+}
+
+a:link, a:visited {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d51b4a;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.word-form{
+    display: flex;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="/faviconit/favi.png"/>
+    <title>Learn Chinese</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+
+
+<ul>
+    <% words.forEach(function(word){ %>
+        <li>
+            Translation: <%- word.translation %> <br>
+            Tones: <%- word.tones %> <br>
+            Characters: <a href=<%= "/word/" + word._id %>> <%- word.characters %> </a>
+        </li>
+    <% }); %>
+</ul>
+</body>
+</html>
