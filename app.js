@@ -35,8 +35,15 @@ const LessonSchema = new Schema({
     words: [WordSchema]
 });
 
+const TestSchema = new Schema({
+    goodCounter: Number,
+    totalCounter: Number,
+    lesson: LessonSchema
+})
+
 var Lesson = mongoose.model('Lesson', LessonSchema);
 var Word = mongoose.model('Word', WordSchema);
+var Test = mongoose.model('TestSchema', TestSchema);
 
 
 let takeNRandomWords = async function(n){
@@ -50,8 +57,6 @@ let listLessons = async function() {
 };
 
 
-
-
 app.get("/", async function (req,res) {
     var lessons = await listLessons();
     res.render('main', {
@@ -61,6 +66,17 @@ app.get("/", async function (req,res) {
 
 app.get('/add-word-form', (req, res) => {
     res.sendFile(path.join(__dirname, '/form.html'));
+});
+
+app.post('/test', (req, res) => {
+    Test.save()
+        .then(
+            res.sendFile(path.join(__dirname, '/test.html'))
+        )
+        .catch(
+            res.status(400).send("unable to save to database")
+        );
+    // res.sendFile(path.join(__dirname, '/test.html'));
 });
 
 app.post("/add-word-form", (req, res) => {
@@ -85,15 +101,17 @@ app.post("/add-word-form", (req, res) => {
     res.redirect('/');
 })
 
-app.get("/lesson/:id", async function (req,res) {
 
+app.get("/lesson/:id", async function (req,res) {
     var id = req.params["id"];
     var lessonY = await Lesson.findById(id).exec();
     var lenOfLesson = lessonY.words.length;
-    console.log(lenOfLesson)
+    var words = lessonY.words;
+
     res.render('lesson', {
         lesson: lessonY,
-        numOfWordsHere: lenOfLesson
+        numOfWordsHere: lenOfLesson,
+        words: words
     });
 });
 
@@ -118,5 +136,3 @@ app.get("/random_words/:n", async function (req,res) {
 app.listen(9001, () => {
     console.log('App is starting at port', 9001)
 });
-
-
