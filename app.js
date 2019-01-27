@@ -36,7 +36,7 @@ const LessonSchema = new Schema({
 });
 
 const TestSchema = new Schema({
-    goodCounter: Number,
+    correctCounter: Number,
     totalCounter: Number,
     lesson: LessonSchema
 })
@@ -69,13 +69,9 @@ app.get('/add-word-form', (req, res) => {
 });
 
 app.post('/test', (req, res) => {
-    Test.save()
-        .then(
-            res.sendFile(path.join(__dirname, '/test.html'))
-        )
-        .catch(
-            res.status(400).send("unable to save to database")
-        );
+    var lesson = Lesson.findById(id);
+
+    console.log(lesson)
     // res.sendFile(path.join(__dirname, '/test.html'));
 });
 

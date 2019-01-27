@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="lesson">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="/faviconit/favi.png"/>
@@ -12,19 +12,61 @@
     <%- lesson.name %>
 </h1>
 
+<h3>Number of words in this lesson: <%- numOfWordsHere %></h3>
 
-<h2>Number of words in this lesson: <%- numOfWordsHere %></h2>
+<form method="post" action="/test">
+    <button>Test</button>
+    <input type="hidden" value="<%-lesson._id%>">
+</form>
+
+<ul> <% lesson.words.forEach(function(word){ %>
+        <li type="1" id="num">
+
+            <h2 class="char" style="font-size: 30px"> Characters: <a href="<%= "/word/" + word._id %>" target="_blank" > <%- word.characters %> </a></h2>
+            <br>
+
+            <h2 class="pron"> Pronunciation:
+                <%for(i=0;i<word.tones.length;i++){%>
+                <%-word.pronunciation.split(' ')[i]%>
+                <%-word.tones[i]%>
+                <%}%>
+            </h2>
+
+            <div class="boxes">
+                <label class="container" id="know">I know that!
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container" id="dont-know">Don't know that
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <br>
+
+            <h2 class="trans"> Translation: <%- word.translation %> </h2>
+
+            <div class="boxes">
+                <label class="container">I know that!
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Don't know that
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <br>
+
+            <h2 class="not"><%- (word.notes.length!=0)?word.notes:''%></h2>
+
+            <br><br>
+
+        </li>
+    <% }); %>
+</ul>
 
 
 
-<!--<ul>-->
-    <!--<% lesson.words.forEach(function(word){ %>-->
-        <!--<li>-->
-            <!--Translation: <%- word.translation %> <br>-->
-            <!--Tones: <%- word.tones %> <br>-->
-            <!--Characters: <a href=<%= "/word/" + word._id %>> <%- word.characters %> </a>-->
-        <!--</li>-->
-    <!--<% }); %>-->
-<!--</ul>-->
 </body>
 </html>
